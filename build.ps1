@@ -8,6 +8,7 @@ $references = @('System.dll','System.Core.dll','System.Xaml.dll','System.Windows
 $compilerArgs = @('/nologo','/target:winexe','/platform:anycpu','/optimize+',('/out:' + (Join-Path $taskDir $OutputName)),('/win32icon:' + (Join-Path $taskDir 'icons\Immersion.ico')))
 foreach ($reference in $references) { $compilerArgs += '/reference:' + (Join-Path $framework $reference) }
 $compilerArgs += Join-Path $taskDir 'Immersion.cs'
+$compilerArgs += Join-Path $taskDir 'LavaFluid.cs'
 & $compiler @compilerArgs
 if ($LASTEXITCODE -ne 0) { throw 'Build failed' }
 Write-Output ('Built ' + (Join-Path $taskDir $OutputName))
